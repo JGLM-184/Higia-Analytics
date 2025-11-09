@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial - Higia Analytics</title>
+    <title>Dashboard - Higia Analytics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
@@ -20,14 +20,19 @@
         </ul>
     </nav>
 
-    <!-- Container central com o card -->
-    <section class="content">
+    <!-- Container principal -->
+    <div class="main-container">
+        <!-- Card Dashboard à esquerda -->
         <div class="card">
-            <div class="logo-text">
-                Dashboard
-            </div>
+            <div class="logo-text">Dashboard</div>
         </div>
-    </section>
+
+        <!-- Container das imagens à direita -->
+        <div class="images-wrapper">
+            <img src="../assets/graficos.png" alt="Gráficos Dashboard" class="dashboard-img">
+            <img src="../assets/simbolos.png" alt="Símbolos Dashboard" class="dashboard-img">
+        </div>
+    </div>
 
     <!-- Modal Sobre -->
     <div id="sobreModal" class="modal">
@@ -87,36 +92,30 @@
     </div>
 
     <script>
-        // Elementos do modal
         const modal = document.getElementById('sobreModal');
         const sobreLink = document.getElementById('sobreLink');
         const closeBtn = document.querySelector('.close');
         const btnClose = document.querySelector('.btn-close');
 
-        // Abrir modal
         sobreLink.onclick = function (e) {
             e.preventDefault();
             modal.style.display = 'block';
         }
 
-        // Fechar modal com X
         closeBtn.onclick = function () {
             modal.style.display = 'none';
         }
 
-        // Fechar modal com botão
         btnClose.onclick = function () {
             modal.style.display = 'none';
         }
 
-        // Fechar modal clicando fora
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = 'none';
             }
         }
 
-        // Fechar modal com tecla ESC
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape' && modal.style.display === 'block') {
                 modal.style.display = 'none';

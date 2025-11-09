@@ -17,14 +17,11 @@
 }
 
 body {
-    /* Degradê de verde no fundo */
     background: linear-gradient(90deg, var(--verde1), var(--verde2), var(--verde3));
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-/* Navbar no canto superior direito */
+/* Navbar */
 .navbar {
     position: absolute;
     top: 30px;
@@ -33,6 +30,7 @@ body {
     padding: 12px 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
 }
 
 .nav-links {
@@ -53,46 +51,55 @@ body {
     opacity: 0.5;
 }
 
-/* Container central */
-.content {
+/* Container principal */
+.main-container {
     display: flex;
-    justify-content: flex-start;
+    gap: 50px;
+    padding: 120px 80px 40px 80px;
     align-items: flex-start;
-    flex: 1;
-    padding: 120px 120px 40px 120px;
 }
 
-/* Card central com Higia Analytics */
+/* Card Dashboard */
 .card {
     background: #F5EFB8;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 60px 500px 100px 60px;
+    padding: 60px 400px 100px 60px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 40px;
 }
 
-/* Título Dashboard */
 .logo-text {
     font-size: 5rem;
     font-weight: 700;
     color: var(--preto);
     line-height: 1.1;
-    text-align: left;
 }
 
-.logo-text .analytics {
-    display: block;
+/* Container das imagens */
+.images-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
 }
 
-/* ========== ESTILOS DO MODAL ========== */
+/* Imagens do dashboard */
+.dashboard-img {
+    width: 45%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== MODAL ========== */
 
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
@@ -198,7 +205,6 @@ body {
     box-shadow: 0 4px 12px rgba(102, 212, 157, 0.4);
 }
 
-/* Animações */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -221,7 +227,6 @@ body {
     }
 }
 
-/* Scrollbar customizada para o modal */
 .modal-body::-webkit-scrollbar {
     width: 8px;
 }
