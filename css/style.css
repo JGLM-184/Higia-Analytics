@@ -2,10 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
-/* Paleta de cores*/
 :root {
     --verde1: #66d49d;
     --verde2: #93e7a1;
@@ -14,66 +13,76 @@
     --dourado2: #FAC146;
     --branco: #FFFFFF;
     --preto: #2C2C2C;
-}   
+    --cinza-navbar: #8B9B8F;
+}
 
 body {
-    background-color: #FFFFFF;
-}
-
-/* Navbar */
-.navbar {
-    width: 100%;
-    padding: 1rem 2rem;
+    /* Degradê de verde no fundo */
+    background: linear-gradient(135deg, var(--verde1) 0%, var(--verde2) 50%, var(--verde3) 100%);
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    /* Degradê */
-    background: linear-gradient(90deg,  var(--verde1), var(--verde2), var(--verde3));
+    flex-direction: column;
 }
 
-
-/* Logo */
-.logo {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: var(--grafite);
+/* Navbar no canto superior direito */
+.navbar {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background-color: var(--cinza-navbar);
+    padding: 12px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Links */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 25px;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--grafite);
+    color: var(--branco);
     font-weight: 500;
+    font-size: 0.95rem;
     transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: var(--branco);
+    opacity: 0.8;
 }
 
-
-/* Container da página */
+/* Container central */
 .content {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    flex: 1;
+    padding: 40px 120px;
 }
 
-/* Card */
+/* Card central com Higia Analytics */
 .card {
-    width: 300px;
-    height: 180px;
-    background: var(--branco);
-    border-radius: 12px;
-    border: 2px solid var(--oliva-escuro);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+    background: #F5EFB8;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 60px 600px 100px 60px; /* Muito padding à direita, pouco à esquerda */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinha conteúdo à esquerda */
+    gap: 40px;
 }
 
+/* Título Higia Analytics */
+.logo-text {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--preto);
+    line-height: 1.1;
+    text-align: left;
+}
+
+.logo-text .analytics {
+    display: block;
+}

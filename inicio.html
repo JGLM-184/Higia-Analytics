@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Inicial</title>
-
+    <title>Página Inicial - Higia Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <div id="navbar"></div>
+    <!-- Navbar no canto superior direito -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#conversao">Conversão DB</a></li>
+            <li><a href="#sol">Sol</a></li>
+        </ul>
+    </nav>
 
-    <h1 style="padding: 30px;">Início</h1>
-
-     <!-- CONTAINER DA PÁGINA -->
+    <!-- Container central com o card -->
     <section class="content">
-        <div class="card"></div>
+        <div class="card">
+            <div class="logo-text">
+                Higia
+                <span class="analytics">Analytics</span>
+            </div>
+        </div>
     </section>
 
-    <script>
-        fetch("components/navbar.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("navbar").innerHTML = data;
-            });
-    </script>
-
 </body>
+
 </html>
