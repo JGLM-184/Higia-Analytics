@@ -11,14 +11,14 @@
     --verde3: #c1eb91;
     --dourado1: #DCC33D;
     --dourado2: #FAC146;
-    --branco: #FFFFFF;
+    --preto-navlink: #0e0d0d;
     --preto: #2C2C2C;
-    --cinza-navbar: #8B9B8F;
+    --amarelo-navbar: #F5EFB8;
 }
 
 body {
     /* Degradê de verde no fundo */
-    background: linear-gradient(135deg, var(--verde1) 0%, var(--verde2) 50%, var(--verde3) 100%);
+    background: linear-gradient(90deg, var(--verde1), var(--verde2), var(--verde3));
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@ body {
     position: absolute;
     top: 30px;
     right: 40px;
-    background-color: var(--cinza-navbar);
+    background-color: var(--amarelo-navbar);
     padding: 12px 30px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -43,23 +43,23 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--branco);
+    color: var(--preto-navlink);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     transition: 0.3s;
 }
 
 .nav-links a:hover {
-    opacity: 0.8;
+    opacity: 0.5;
 }
 
 /* Container central */
 .content {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex: 1;
-    padding: 40px 120px;
+    padding: 120px 120px 40px 120px;
 }
 
 /* Card central com Higia Analytics */
@@ -67,10 +67,10 @@ body {
     background: #F5EFB8;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 60px 600px 100px 60px; /* Muito padding à direita, pouco à esquerda */
+    padding: 60px 600px 100px 60px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Alinha conteúdo à esquerda */
+    justify-content: flex-start;
     gap: 40px;
 }
 
@@ -85,4 +85,157 @@ body {
 
 .logo-text .analytics {
     display: block;
+}
+
+/* ========== ESTILOS DO MODAL ========== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s;
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 3% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s;
+}
+
+.modal-header {
+    padding: 25px 35px;
+    background: linear-gradient(90deg, var(--verde1), var(--verde2), var(--verde3));
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--preto);
+    font-weight: 700;
+}
+
+.close {
+    color: var(--preto);
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    line-height: 1;
+}
+
+.close:hover {
+    color: #555;
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 35px;
+    color: var(--preto);
+    line-height: 1.7;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.modal-body h3 {
+    margin-top: 25px;
+    margin-bottom: 12px;
+    color: var(--verde1);
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.modal-body h3:first-of-type {
+    margin-top: 10px;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.modal-body strong {
+    color: var(--preto);
+    font-weight: 600;
+}
+
+.modal-footer {
+    padding: 20px 35px;
+    background-color: #f5f5f5;
+    border-radius: 0 0 12px 12px;
+    text-align: right;
+}
+
+.btn-close {
+    background: linear-gradient(90deg, var(--verde1), var(--verde2));
+    color: var(--preto);
+    border: none;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-close:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 212, 157, 0.4);
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Scrollbar customizada para o modal */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--verde2);
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--verde1);
 }
