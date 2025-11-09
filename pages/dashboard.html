@@ -1,30 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <title>Página Inicial - Higia Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
+
 <body>
 
-    <div id="navbar"></div>
+    <!-- Navbar no canto superior direito -->
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="/pages/inicio.html">Início</a></li>
+            <li><a href="/pages/conversao.html">Conversão DB</a></li>
+            <li><a href="#" id="sobreLink">Sobre</a></li>
+        </ul>
+    </nav>
 
-    <h1 style="padding: 30px;">Tela 'dashboard'</h1>
-
-     <!-- CONTAINER DA PÁGINA -->
+    <!-- Container central com o card -->
     <section class="content">
-        <div class="card"></div>
+        <div class="card">
+            <div class="logo-text">
+                Dashboard
+            </div>
+        </div>
     </section>
-    
+
+    <!-- Modal Sobre -->
+    <div id="sobreModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sobre o Higia Analytics</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Higia Analytics</strong> é um sistema de apoio à análise de dados da saúde suplementar,
+                    desenvolvido como projeto de pesquisa do Curso Superior de Tecnologia em Análise e Desenvolvimento
+                    de Sistemas da FATEC Guarulhos.</p>
+
+                <h3>🎯 Objetivo</h3>
+                <p>Auxiliar na análise de dados do setor de saúde suplementar, oferecendo uma ferramenta gratuita e de
+                    código aberto capaz de processar automaticamente os dados públicos da Agência Nacional de Saúde
+                    Suplementar (ANS).</p>
+
+                <h3>💡 O Problema</h3>
+                <p>As bases de dados da ANS estão disponibilizadas em formato .dbc, que não é compatível com ferramentas
+                    tradicionais de análise como Power BI e Tableau. Isso gera lentidão no processo de Business
+                    Intelligence e atrasa respostas estratégicas no setor.</p>
+
+                <h3>✨ A Solução</h3>
+                <p>O Higia Analytics realiza o processamento automatizado de arquivos .dbc, executando todo o processo
+                    de ETL (Extração, Transformação e Carga de dados) e gerando dashboards interativos com indicadores
+                    relevantes, sem necessidade de ferramentas terceiras ou licenças comerciais.</p>
+
+                <h3>🔍 Funcionalidades</h3>
+                <p><strong>Análise de Beneficiários:</strong> Identificação de tendências por região e faixa etária<br>
+                    <strong>Gestão Econômico-Financeira:</strong> Avaliação da sustentabilidade das operadoras<br>
+                    <strong>Rede Credenciada:</strong> Mapeamento de cobertura regional e especialidades médicas<br>
+                    <strong>Dashboards Interativos:</strong> Visualizações intuitivas para tomada de decisão
+                </p>
+
+                <h3>🛠️ Tecnologias</h3>
+                <p>Desenvolvido em Python (back-end) com interface em HTML e CSS, o sistema utiliza arquitetura modular
+                    para facilitar expansões e adaptações às necessidades específicas de operadoras, pesquisadores e
+                    gestores do setor.</p>
+
+                <h3>👥 Equipe de Desenvolvimento</h3>
+                <p><strong>Desenvolvedores:</strong> João Gabriel Lima de Moraes e Danilo Zamai<br>
+                    <strong>Orientação:</strong> Prof. Esp. Alécio Aparecido Preto de Godoi<br>
+                    <strong>Instituição:</strong> FATEC Guarulhos
+                </p>
+
+                <h3>📊 Impacto</h3>
+                <p>Com mais de 52,3 milhões de beneficiários registrados no setor de saúde suplementar (dados de
+                    abril/2025), o Higia Analytics visa democratizar o acesso à análise de dados, reduzindo custos e
+                    tempo de processamento, especialmente para operadoras de menor porte que não possuem recursos
+                    especializados.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close">Fechar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        fetch("components/navbar.html")
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById("navbar").innerHTML = data;
-            });
+        // Elementos do modal
+        const modal = document.getElementById('sobreModal');
+        const sobreLink = document.getElementById('sobreLink');
+        const closeBtn = document.querySelector('.close');
+        const btnClose = document.querySelector('.btn-close');
+
+        // Abrir modal
+        sobreLink.onclick = function (e) {
+            e.preventDefault();
+            modal.style.display = 'block';
+        }
+
+        // Fechar modal com X
+        closeBtn.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        // Fechar modal com botão
+        btnClose.onclick = function () {
+            modal.style.display = 'none';
+        }
+
+        // Fechar modal clicando fora
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && modal.style.display === 'block') {
+                modal.style.display = 'none';
+            }
+        });
     </script>
 
 </body>
+
 </html>
