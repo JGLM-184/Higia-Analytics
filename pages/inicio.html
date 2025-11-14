@@ -22,15 +22,18 @@
 
     <!-- Container central com o card -->
     <section class="content">
-        <div class="card">
+    <div class="card">
+        <div class="logo-container">
             <div class="logo-text">
-                Higia
-                <span class="analytics">Analytics</span>
+                Higia <span class="analytics">Analytics</span>
             </div>
+            <img src="/assets/higia.png" alt="Logo Higia" class="logo-img">
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Modal Sobre -->
+
+<!-- Modal Sobre -->
     <div id="sobreModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -88,42 +91,37 @@
     </div>
 
     <script>
-        // Elementos do modal
         const modal = document.getElementById('sobreModal');
         const sobreLink = document.getElementById('sobreLink');
         const closeBtn = document.querySelector('.close');
         const btnClose = document.querySelector('.btn-close');
 
-        // Abrir modal
         sobreLink.onclick = function (e) {
             e.preventDefault();
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         }
 
-        // Fechar modal com X
         closeBtn.onclick = function () {
             modal.style.display = 'none';
         }
 
-        // Fechar modal com botão
         btnClose.onclick = function () {
             modal.style.display = 'none';
         }
 
-        // Fechar modal clicando fora
         window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = 'none';
             }
         }
 
-        // Fechar modal com tecla ESC
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape' && modal.style.display === 'block') {
                 modal.style.display = 'none';
             }
         });
     </script>
+
 
 </body>
 

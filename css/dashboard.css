@@ -51,75 +51,156 @@ body {
     opacity: 0.5;
 }
 
-/* Container principal */
+/* ===================== CONTAINER PRINCIPAL ===================== */
+
+/* Container geral */
 .main-container {
+    margin-top: 120px;
     display: flex;
-    gap: 50px;
-    padding: 120px 80px 40px 80px;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 40px;
 }
 
-/* Card Dashboard */
+/* Linha superior (título + filtros lado a lado) */
+.top-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+/* Cards */
 .card {
     background: #F5EFB8;
     border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 60px 400px 100px 60px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 25px 30px;
+    min-width: 280px;
 }
 
-.logo-text {
-    font-size: 5rem;
+/* Título maior */
+.titulo-card .logo-text {
+    font-size: 3.3rem;
     font-weight: 700;
     color: var(--preto);
-    line-height: 1.1;
 }
 
-/* Container das imagens */
+/* Filtros */
+.filtros-card {
+    width: 500px;
+}
+
+.filtros-card h3 {
+    margin-bottom: 15px;
+    color: var(--preto);
+}
+
+.filtros-card label {
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.filtros-card select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+
+.btn-filtrar {
+    margin-top: 15px;
+    padding: 10px;
+    background: var(--verde1);
+    color: var(--preto);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Linha com os filtros lado a lado */
+.filtros-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Cada item do filtro */
+.filtro-item {
+    flex: 1;  /* faz cada caixa ocupar metade */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Select mais bonito */
+.filtro-item select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+
+/* Imagens */
 .images-wrapper {
     display: flex;
     flex-direction: column;
+    align-items: center;  /* centraliza */
     gap: 30px;
-    flex: 1;
+    width: 100%;
 }
 
-/* Imagens do dashboard */
 .dashboard-img {
-    width: 45%;
-    height: auto;
+    width: 85%;
+    max-width: 850px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
+
+
 
 /* ========== MODAL ========== */
 
 .modal {
-    display: none;
+    display: none;     /* mantém invisível até JS abrir */
     position: fixed;
-    z-index: 9999;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     animation: fadeIn 0.3s;
-    overflow-y: auto;
+
+    /* Centralização vertical/horizontal perfeita */
+    justify-content: center;
+    align-items: center;
+
+    /* Para telas pequenas: evita corte nas bordas */
+    padding: 20px;
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 3% auto;
     padding: 0;
     border-radius: 12px;
     width: 90%;
     max-width: 800px;
+
+    /* impede que o modal passe do tamanho da tela */
+    max-height: 90vh;
+
+    /* permite que só a área interna role */
+    overflow: hidden;
+
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     animation: slideDown 0.3s;
 }
 
+/* Cabeçalho */
 .modal-header {
     padding: 25px 35px;
     background: linear-gradient(90deg, var(--verde1), var(--verde2), var(--verde3));
@@ -136,6 +217,7 @@ body {
     font-weight: 700;
 }
 
+/* Botão X */
 .close {
     color: var(--preto);
     font-size: 2.5rem;
@@ -150,11 +232,14 @@ body {
     transform: rotate(90deg);
 }
 
+/* Corpo do modal */
 .modal-body {
     padding: 35px;
     color: var(--preto);
     line-height: 1.7;
-    max-height: 70vh;
+
+    /* para não vazar para fora do modal */
+    max-height: calc(90vh - 160px); 
     overflow-y: auto;
 }
 
@@ -166,20 +251,12 @@ body {
     font-size: 1.3rem;
 }
 
-.modal-body h3:first-of-type {
-    margin-top: 10px;
-}
-
 .modal-body p {
     margin-bottom: 15px;
     text-align: justify;
 }
 
-.modal-body strong {
-    color: var(--preto);
-    font-weight: 600;
-}
-
+/* Rodapé */
 .modal-footer {
     padding: 20px 35px;
     background-color: #f5f5f5;
@@ -187,6 +264,7 @@ body {
     text-align: right;
 }
 
+/* Botão fechar */
 .btn-close {
     background: linear-gradient(90deg, var(--verde1), var(--verde2));
     color: var(--preto);
@@ -205,28 +283,7 @@ body {
     box-shadow: 0 4px 12px rgba(102, 212, 157, 0.4);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
+/* Scrollbar */
 .modal-body::-webkit-scrollbar {
     width: 8px;
 }

@@ -156,48 +156,62 @@ body {
 /* ============================= */
 /*          MODAL SOBRE          */
 /* ============================= */
+/* ========== MODAL ========== */
+
 .modal {
-    display: none;
+    display: none;     /* mantém invisível até JS abrir */
     position: fixed;
     z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
     background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(2px);
-    padding: 50px 20px;
     animation: fadeIn 0.3s;
+
+    /* Centralização vertical/horizontal perfeita */
+    justify-content: center;
+    align-items: center;
+
+    /* Para telas pequenas: evita corte nas bordas */
+    padding: 20px;
 }
 
 .modal-content {
-    background: #ffffff;
-    margin: 3% auto;
-    border-radius: 12px;
+    background-color: #fefefe;
     padding: 0;
+    border-radius: 12px;
     width: 90%;
     max-width: 800px;
+
+    /* impede que o modal passe do tamanho da tela */
+    max-height: 90vh;
+
+    /* permite que só a área interna role */
+    overflow: hidden;
+
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     animation: slideDown 0.3s;
 }
 
+/* Cabeçalho */
 .modal-header {
+    padding: 25px 35px;
+    background: linear-gradient(90deg, var(--verde1), var(--verde2), var(--verde3));
+    border-radius: 12px 12px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, var(--verde1), var(--verde2), var(--verde3));
-    padding: 25px 35px;
-    border-radius: 12px 12px 0 0;
-    color: var(--preto);
 }
 
 .modal-header h2 {
     margin: 0;
     font-size: 2rem;
+    color: var(--preto);
     font-weight: 700;
 }
 
+/* Botão X */
 .close {
     color: var(--preto);
     font-size: 2.5rem;
@@ -212,69 +226,58 @@ body {
     transform: rotate(90deg);
 }
 
+/* Corpo do modal */
 .modal-body {
-    padding: 25px;
+    padding: 35px;
     color: var(--preto);
-    line-height: 1.6;
-    max-height: 70vh;
+    line-height: 1.7;
+
+    /* para não vazar para fora do modal */
+    max-height: calc(90vh - 160px); 
     overflow-y: auto;
 }
 
 .modal-body h3 {
-    margin-top: 20px;
+    margin-top: 25px;
+    margin-bottom: 12px;
     color: var(--verde1);
-    font-size: 1.2rem;
-}
-
-.modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 15px 25px;
-    border-top: 1px solid #eee;
-}
-
-.btn-close {
-    background-color: var(--verde2);
-    color: var(--preto);
     font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Rodapé */
+.modal-footer {
+    padding: 20px 35px;
+    background-color: #f5f5f5;
+    border-radius: 0 0 12px 12px;
+    text-align: right;
+}
+
+/* Botão fechar */
+.btn-close {
+    background: linear-gradient(90deg, var(--verde1), var(--verde2));
+    color: var(--preto);
     border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 12px 35px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
 }
 
 .btn-close:hover {
-    background-color: var(--verde3);
+    opacity: 0.8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 212, 157, 0.4);
 }
 
-/* ============================= */
-/*        ANIMAÇÕES & MEDIA      */
-/* ============================= */
-/* Animações */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Scrollbar customizada para o modal */
+/* Scrollbar */
 .modal-body::-webkit-scrollbar {
     width: 8px;
 }

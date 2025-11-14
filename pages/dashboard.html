@@ -20,19 +20,46 @@
         </ul>
     </nav>
 
-    <!-- Container principal -->
-    <div class="main-container">
-        <!-- Card Dashboard à esquerda -->
-        <div class="card">
+   <!-- Container principal -->
+<div class="main-container">
+
+    <!-- LINHA SUPERIOR: título + filtros -->
+    <div class="top-row">
+
+        <div class="card titulo-card">
             <div class="logo-text">Dashboard</div>
         </div>
 
-        <!-- Container das imagens à direita -->
-        <div class="images-wrapper">
-            <img src="../assets/graficos.png" alt="Gráficos Dashboard" class="dashboard-img">
-            <img src="../assets/simbolos.png" alt="Símbolos Dashboard" class="dashboard-img">
+        <div class="card filtros-card">
+    <h3>Filtros</h3>
+
+    <div class="filtros-row">
+
+        <div class="filtro-item">
+            <label for="data">Data:</label>
+            <select id="data"></select>
         </div>
+
+        <div class="filtro-item">
+            <label for="categoria">Categoria:</label>
+            <select id="categoria"></select>
+        </div>
+
     </div>
+
+    <button class="btn-filtrar">Aplicar</button>
+</div>
+
+    </div>
+
+    <!-- LINHA INFERIOR: imagens ocupando largura total -->
+    <div class="images-wrapper">
+        <img src="../assets/graficos.png" alt="Gráficos Dashboard" class="dashboard-img">
+        <img src="../assets/simbolos.png" alt="Símbolos Dashboard" class="dashboard-img">
+    </div>
+
+</div>
+
 
     <!-- Modal Sobre -->
     <div id="sobreModal" class="modal">
@@ -99,7 +126,7 @@
 
         sobreLink.onclick = function (e) {
             e.preventDefault();
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         }
 
         closeBtn.onclick = function () {
